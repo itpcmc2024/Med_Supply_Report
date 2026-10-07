@@ -1,8 +1,8 @@
 Med_Supply_Report V2 — Apps Script + GitHub Pages iframe
 
 ไฟล์ในชุด
-- Code.gs: อ่านข้อมูลจาก Spreadsheet ID และแท็บ result69; อนุญาต iframe สำหรับหน้า GitHub Pages
-- index.html: ตารางรายการ, การ์ดกรองคลัง, กล่องรายละเอียด และกราฟเปรียบเทียบแบบลากวาง/เพิ่มรายการ
+- Code.gs: อ่านข้อมูลจาก Spreadsheet ID และแท็บ result69; รองรับ last_active_date และ active_date; อนุญาต iframe สำหรับหน้า GitHub Pages
+- index.html: ตารางรายการเต็มหน้าก่อนเลือกสินค้า, การ์ดกรองคลังสีพาสเทล, กล่องรายละเอียดเมื่อคลิก และกราฟเปรียบเทียบแบบลากวาง/เพิ่มรายการ
 
 ติดตั้ง
 1. เปิดโปรเจกต์ Apps Script ของระบบ แล้วแทนที่ Code.gs ด้วยไฟล์ในชุดนี้
@@ -10,18 +10,20 @@ Med_Supply_Report V2 — Apps Script + GitHub Pages iframe
 3. ตรวจ Spreadsheet ID และชื่อแท็บ result69 ใน Code.gs
 4. บันทึก แล้วเลือก Deploy > Manage deployments > Edit > New version > Deploy
 5. ใช้ URL /exec ของ Deployment เดิมใน iframe บน GitHub Pages
-6. หากเปลี่ยนสิทธิ์การเข้าถึง ให้กำหนดตามกลุ่มผู้ใช้งานที่ควรเห็นข้อมูล
+6. กำหนดสิทธิ์การเข้าถึง Web App ให้เหมาะกับกลุ่มผู้ใช้งาน
 
 คอลัมน์ที่แอปอ่านจากแถวหัวตาราง
 icode, n_name, n_unitcost, n_price, sap_oldcode, item_name, warehouse_name,
 total_onhand_qty, sum_draw_qty, onhand_plus_draw_qty, unit_cost, sum_draw_value,
-hos_qty, qty_diff2, compare_status, active_date
+hos_qty, qty_diff2, compare_status, last_active_date (หรือ active_date)
 
-หมายเหตุ
-- มูลค่าขาย/มูลค่าคิดเงินคำนวณจาก n_price × hos_qty ตามที่กำหนด
+รายละเอียด
+- มูลค่าขายคำนวณจาก n_price × hos_qty พร้อมแสดงสูตร เช่น (7,125 × 2)
 - ตัวกรองเปรียบเทียบคำนวณจาก sum_draw_qty เทียบกับ hos_qty
+- สีหัวตารางและแถวเปลี่ยนตามคลังที่เลือก
 - การอนุญาต iframe ใช้ XFrameOptionsMode.ALLOWALL ซึ่งเปิดให้ทุกเว็บไซต์ฝังหน้าแอปได้
 - เวอร์ชันนี้ยังไม่ได้ติดตั้งหรือ Deploy ในบัญชี Google ของคุณ
+
 
 --------------------------------------------------------------------------
 
